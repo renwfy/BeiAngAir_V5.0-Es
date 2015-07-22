@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_homer_bg_defult_2"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/textfield_default_holo_light"
+            android:hint="输入名称" />
+
+        <Button
+            android:id="@+id/update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更新设备" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/bt_power"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dip"
+                android:layout_weight="1"
+                android:text="电源" />
+
+            <Button
+                android:id="@+id/bt_auto"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dip"
+                android:layout_weight="1"
+                android:text="手/自" />
+
+            <Button
+                android:id="@+id/bt_sleep"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dip"
+                android:layout_weight="1"
+                android:text="睡眠" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/bt_child"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dip"
+                android:layout_weight="1"
+                android:text="童锁" />
+
+            <Button
+                android:id="@+id/bt_seep"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dip"
+                android:layout_weight="1"
+                android:text="风速" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+</LinearLayout>

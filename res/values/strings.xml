@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">贝昂·艾尔盾</string>
+
+    <string name="about_beiang">关于贝昂.艾尔盾</string>
+    <string name="help_center">帮助中心</string>
+    <string name="about_com">服务电话：0512-62925562\n&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;400-0026776\n苏州贝昂科技有限公司\nhttp://www.beiangtech.com\n地址：苏州工业园区金芳路11号</string>
+    <string name="beiang_introduce">Airdog, 无耗材空气净化器第一品牌。</string>
+
+    <!-- 设备列表 -->
+    <string name="delete_device_hint">确认删除该设备？</string>
+    <string name="delete_device_hint2">删除设备后将解除管理员权限，是否删除设备？</string>
+
+    <!-- 添加设备 -->
+    <string name="add_device">添加设备</string>
+    <string name="config_page_hint">添加一个新设备到WIFI网络</string>
+    <string name="ssid">WiFi名称:</string>
+    <string name="wifi_password">WiFi密码:</string>
+    <string name="show_password">显示密码</string>
+    <string name="start">配置</string>
+    <string name="display">***</string>
+    <string name="configing_hint">配置有可能需要1分钟，请稍等...</string>
+    <string name="config_fail">配置失败</string>
+    <string name="config_timeout">连接服务器超时,请稍后重试</string>
+    <string name="config_success">配置成功</string>
+    <string name="click_open">点击开启</string>
+    <string name="click_input">手动输入</string>
+    <string name="other_config">其他方式</string>
+    <string name="qr_code">扫描二维码</string>
+    <string name="bind_device">已绑定设备</string>
+    <string name="inpuut_wifi_pass">输入WIFI密码</string>
+
+
+    <!-- 控制页面 -->
+    <string name="auto_hint">自动模式状态，不能进行风速操作</string>
+    <string name="lock_hint">童锁开启状态，不能进行其它操作</string>
+    <string name="poweroff_hint">设备已关机，不能进行其它操作。</string>
+    <string name="sleepon_hint">设备处于睡眠模式,不能进行童锁操作</string>
+    <string name="wind_hint">睡眠开启状态，不能进行风速操作</string>
+    
+    <!-- 模式 -->
+    <string name="room_tem">室温:</string>
+    <string name="mode_select">模式选择</string>
+    <string name="mode">模式</string>
+    <string name="mode_auto">自动</string>
+    <string name="mode_cool">制冷</string>
+    <string name="mode_arefaction">除湿</string>
+    <string name="mode_hot">制热</string>
+    <string name="mode_blast">送风</string>
+
+    <!-- 风速选择 -->
+    <string name="wind_select">风速选择</string>
+    <string name="wind_1">一档</string>
+    <string name="wind_2">二档</string>
+    <string name="wind_3">三档</string>
+    <string name="wind_4">四档</string>
+    <string name="wind_5">五档</string>
+
+    <!-- 城市选择 -->
+    <string name="city_title">请选择城市</string>
+    <string name="city_title_two">添加城市</string>
+    <string name="city_input">请输入城市名称:</string>
+    <string name="add_city_success">添加成功！</string>
+    <string name="city_added">已添加过该城市</string>
+    <string name="error_add_city">没有该城市,请选择其它城市！</string>
+
+
+    <!-- 生成二维码 -->
+    <string name="qr_code_title">二维码授权</string>
+    <string name="qr_code_share">分享</string>
+
+    <!-- 帮助中心 -->
+    <string name="option_user_category">用户</string>
+    <string name="option_logout">注销登陆</string>
+    <string name="option_bindphone">绑定手机</string>
+    <string name="option_obout_category">关于</string>
+    <string name="option_obout">关于我们</string>
+    <string name="option_system_category">系统</string>
+    <string name="option_check_update">检查更新</string>
+
+    <!-- ListView -->
+    <string name="ptr_pull_to_refresh">下拉刷新</string>
+    <string name="ptr_release_to_refresh">释放刷新</string>
+    <string name="ptr_refreshing">刷新中…</string>
+    <string name="ptr_last_updated">更新于: %1$s</string>
+
+    <!-- AirDog -->
+    <string name="beiang_airdog">贝昂·艾尔盾</string>
+    <string name="beiang_slogan">爱如空气,纯净呼吸</string>
+    <string name="vol_set">音量调节</string>
+    <string name="fri_share">分享好友</string>
+
+    <!-- Utility Strings -->
+    <string name="easylink_string_ok">成功</string>
+    <string name="user_info">用户信息</string>
+    <string name="format_timer_txt">%1$s小时%2$s分钟后%3$s</string>
+    <string name="easylink_succee">配置成功</string>
+
+    <!-- 扫描二维码 -->
+    <string name="qr_code_msg_info">扫描二维码添加设备 </string>
+    <string name="msg_default_status">扫描二维码添加设备\n请将条码置于取景框内扫描</string>
+    <string name="msg_encode_contents_failed">无法根据已有数据生成条码。</string>
+    <string name="button_ok">确定</string>
+    <string name="contents_text">文字</string>
+    <string name="msg_bulk_mode_scanned">批量扫描：找到条码，已保存。</string>
+    <string name="button_cancel">取消</string>
+    <string name="msg_camera_framework_bug">抱歉，Android相机出现问题。您可能需要重启设备。</string>
+    <string name="error_pick_pic">选取图片出错</string>
+    <string name="fail_decode">解码出错</string>
+    <string name="qr_decoding">正在解码……</string>
+
+</resources>

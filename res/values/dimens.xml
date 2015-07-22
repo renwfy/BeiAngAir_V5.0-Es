@@ -1,0 +1,10 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="default_head_height">50dip</dimen>
+    <dimen name="default_head_title_size">16sp</dimen>
+    
+     <dimen name="slidingmenu_offset">120dp</dimen>
+    <dimen name="shadow_width">8dp</dimen>
+
+</resources>

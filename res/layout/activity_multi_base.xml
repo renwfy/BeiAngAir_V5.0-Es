@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_main_bg" >
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <!-- The main content view -->
+
+        <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </FrameLayout>
+
+        <!-- The navigation drawer -->
+
+        <RelativeLayout
+            android:id="@+id/menu_frame"
+            android:layout_width="90dip"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="#80000000"
+            android:choiceMode="singleChoice"
+            android:padding="12dip" >
+
+            <ListView
+                android:id="@+id/right_drawer"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="80dip"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="20dp"
+                android:listSelector="#00000000" />
+        </RelativeLayout>
+    </android.support.v4.widget.DrawerLayout>
+
+</RelativeLayout>

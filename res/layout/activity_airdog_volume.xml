@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_main_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="150dip" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_top_volume" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_top"
+        android:background="@color/white"
+        android:padding="20dip" >
+
+        <TextView
+            android:id="@+id/tv_cur_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="当前音量：0%"
+            android:textColor="@color/gray"
+            android:textSize="18sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tv_cur_volume"
+            android:layout_marginTop="20dip" >
+
+            <SeekBar
+                android:id="@+id/iv_volume_adjust"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:gravity="center" />
+
+            <!--
+                android:progressDrawable="@drawable/ic_volume_adjust"
+                android:thumb="@drawable/iv_volume_thumb"
+                android:thumbOffset="0dip"
+            -->
+
+            <ImageView
+                android:id="@+id/iv_volume_value"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="50dip"
+                android:layout_toRightOf="@id/iv_volume_adjust"
+                android:src="@drawable/ic_volume_value" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dip"
+                android:layout_toRightOf="@id/iv_volume_value"
+                android:text="100%"
+                android:textColor="@color/gray"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="12dip"
+                android:layout_toRightOf="@id/iv_volume_value"
+                android:text="0%"
+                android:textColor="@color/gray"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

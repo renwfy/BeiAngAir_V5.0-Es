@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animation-list android:oneshot="true" xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:duration="150" android:drawable="@drawable/ic_top_wifi_1" />
+	<item android:duration="150" android:drawable="@drawable/ic_top_wifi_2" />
+	<item android:duration="150" android:drawable="@drawable/ic_top_wifi_3" />
+</animation-list>
