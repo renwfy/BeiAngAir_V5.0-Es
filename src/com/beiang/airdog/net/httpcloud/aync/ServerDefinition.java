@@ -7,15 +7,15 @@ public class ServerDefinition {
 	public final static double API_VERSION = 1.0;
 	public final static double API_JSONRPC = 2.0;
 	//forrelease
-	//public final static String API_KEY = "34b9a684f1fd61194026d92b7cf2a11c";
-	//public final static String API_SECRET = "dc52bdb7601eafb7fa580e000f8d293f";
-	//private static final String IP_ADDRESS_EXT = "http://p.smart.99.com";
+	public static final String API_KEY = "34b9a684f1fd61194026d92b7cf2a11c";
+	public static final String API_SECRET = "dc52bdb7601eafb7fa580e000f8d293f";
+	public static final String IP_ADDRESS_EXT = "http://p.smart.99.com";
 	
 	
 	//fortest
-	public final static String API_KEY = "c2674528e7fab0e856d9b4a563168f19";
-	public final static String API_SECRET = "02a2025b903e585efff6b2fe73b15675";
-	public static final String IP_ADDRESS_EXT = "http://121.207.243.132";
+	//public final static String API_KEY = "c2674528e7fab0e856d9b4a563168f19";
+	//public final static String API_SECRET = "02a2025b903e585efff6b2fe73b15675";
+	//public static final String IP_ADDRESS_EXT = "http://121.207.243.132";
 	
 	
 

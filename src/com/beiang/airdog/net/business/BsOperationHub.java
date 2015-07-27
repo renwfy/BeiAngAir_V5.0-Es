@@ -281,6 +281,7 @@ public class BsOperationHub {
 				}
 
 				CurrentDevice.instance().devList = list;
+				
 				if(cloudCbk != null){
 					cloudCbk.onSuccess(rspData);
 				}

@@ -99,8 +99,12 @@ public class IHomerNewHomeActivity extends BaseMultiPartActivity implements OnCl
 			@Override
 			public void onSuccess(RspMsgBase rspData) {
 				// TODO Auto-generated method stub
-				Toast.show(mActivity, "添加成功");
-				loadData();
+				if(rspData.isSuccess()){
+					Toast.show(mActivity, "添加成功");
+					loadData();
+					return;
+				}
+				Toast.show(mActivity, "添加失败");
 			}
 
 			@Override

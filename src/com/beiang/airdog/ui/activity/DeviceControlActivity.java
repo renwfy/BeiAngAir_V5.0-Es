@@ -542,7 +542,7 @@ public class DeviceControlActivity extends BaseMultiPartActivity implements OnCl
 				if (rspData.isSuccess()) {
 					CommandPair.RspCommand rsp = (CommandPair.RspCommand) rspData;
 					if (rsp.reply != null) {
-						LogUtil.i(rsp.reply);
+						//LogUtil.i(rsp.reply);
 						AirInfo airInfo = EParse.parseEairByte(rsp.reply);
 						mAirInfo = airInfo;
 						setData();

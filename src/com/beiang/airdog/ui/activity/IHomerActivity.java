@@ -153,6 +153,9 @@ public class IHomerActivity extends BaseMultiPartActivity implements OnClickList
 					getHomerDeviceList(data.home_id, false);
 				}
 			}
+		}else{
+			getHomeFinish = true;
+			callback.success();
 		}
 	}
 
@@ -202,6 +205,8 @@ public class IHomerActivity extends BaseMultiPartActivity implements OnClickList
 			@Override
 			public void onFailure(ErrorObject err) {
 				// TODO Auto-generated method stub
+				getBindFinish = true;
+				callback.success();
 			}
 		});
 	}
@@ -290,6 +295,10 @@ public class IHomerActivity extends BaseMultiPartActivity implements OnClickList
 	private void matchBindDevList() {
 		List<DevEntity> devList = CurrentDevice.instance().devList;
 		List<DevEntity> temp = new ArrayList<DevEntity>();
+		if(devList == null){
+			devAdapter.setData(null);
+			return;
+		}
 		for (DevEntity devEty : devList) {
 			boolean b = true;
 			if (allHomeDeviceList != null) {
