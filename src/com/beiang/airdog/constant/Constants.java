@@ -51,7 +51,8 @@ public class Constants {
 		public static final String DN_CAR = "CAR";
 		public static final String DN_AURA100 = "AURA100";
 		public static final String DN_JY300 = "JY300";
-		public static final String DN_JY500 = "JY500";
+		//public static final String DN_JY500 = "JY500";
+		public static final String DN_JY500 = "JY500/JY550";
 		public static final String DN_JY300S = "JY300S";
 		public static final String DN_Airdog = "Airdog";
 		public static final String DN_TAir = "TAir";
