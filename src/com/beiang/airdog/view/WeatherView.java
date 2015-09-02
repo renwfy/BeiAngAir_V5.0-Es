@@ -30,7 +30,8 @@ import com.beiang.airdog.utils.LogUtil;
 import com.broadlink.beiangair.R;
 
 public class WeatherView extends RelativeLayout implements View.OnClickListener {
-	private TextView tv_location, tv_time, tv_pm25, tv_level, tv_temper, tv_humidity;
+	private TextView tv_location, tv_time, tv_pm25, tv_level, tv_temper,
+			tv_humidity;
 	private int time = 0;
 	private boolean can;
 
@@ -47,7 +48,8 @@ public class WeatherView extends RelativeLayout implements View.OnClickListener 
 	}
 
 	void init(Context context) {
-		LayoutInflater.from(context).inflate(R.layout.layout_comm_air_view, this, true);
+		LayoutInflater.from(context).inflate(R.layout.layout_comm_air_view,
+				this, true);
 
 		tv_location = (TextView) findViewById(R.id.tv_location);
 		tv_location.setOnClickListener(this);
@@ -79,122 +81,139 @@ public class WeatherView extends RelativeLayout implements View.OnClickListener 
 			getCurCityWeather();
 			return;
 		}
-		BsOperationHub.instance().queryDevIp(mDevice.devId, new ReqCbk<RspMsgBase>() {
-			@Override
-			public void onSuccess(RspMsgBase rspData) {
-				// TODO Auto-generated method stub
-				if (rspData.isSuccess()) {
-					getDevIpPair.RspGetDevIp rsp = (getDevIpPair.RspGetDevIp) rspData;
-					if (rsp.data != null) {
-						String ip = rsp.data.ip;
-						LogUtil.i("devIp = " + ip);
-						if (!TextUtils.isEmpty(ip)) {
-							queryWeatherFromNet(ip);
-							return;
+		BsOperationHub.instance().queryDevIp(mDevice.devId,
+				new ReqCbk<RspMsgBase>() {
+					@Override
+					public void onSuccess(RspMsgBase rspData) {
+						// TODO Auto-generated method stub
+						if (rspData.isSuccess()) {
+							getDevIpPair.RspGetDevIp rsp = (getDevIpPair.RspGetDevIp) rspData;
+							if (rsp.data != null) {
+								String ip = rsp.data.ip;
+								LogUtil.i("devIp = " + ip);
+								if (!TextUtils.isEmpty(ip)) {
+									queryWeatherFromNet(ip);
+									return;
+								}
+							}
 						}
+						getCurCityWeather();
 					}
-				}
-				getCurCityWeather();
-			}
 
-			@Override
-			public void onFailure(ErrorObject err) {
-				// TODO Auto-generated method stub
-				getCurCityWeather();
-			}
-		});
+					@Override
+					public void onFailure(ErrorObject err) {
+						// TODO Auto-generated method stub
+						getCurCityWeather();
+					}
+				});
 	}
 
 	private void getCurCityWeather() {
-		String curCity = new DB_Location(BeiAngAirApplaction.getInstance()).getCurCity();
+		String curCity = new DB_Location(BeiAngAirApplaction.getInstance())
+				.getCurCity();
 		if (TextUtils.isEmpty(curCity)) {
-			new LocationUtils().startLocation(BeiAngAirApplaction.getInstance(), new BDLocationListener() {
-				@Override
-				public void onReceiveLocation(BDLocation arg0) {
-					// TODO Auto-generated method stub
-					String curCity = new DB_Location(BeiAngAirApplaction.getInstance()).getCurCity();
-					if (!TextUtils.isEmpty(curCity)) {
-						queryWeatherFromNet(curCity);
-					}
-				}
-			});
+			new LocationUtils().startLocation(
+					BeiAngAirApplaction.getInstance(),
+					new BDLocationListener() {
+						@Override
+						public void onReceiveLocation(BDLocation arg0) {
+							// TODO Auto-generated method stub
+							String curCity = new DB_Location(
+									BeiAngAirApplaction.getInstance())
+									.getCurCity();
+							if (!TextUtils.isEmpty(curCity)) {
+								queryWeatherFromNet(curCity);
+							}
+						}
+					});
 			return;
 		}
 		queryWeatherFromNet(curCity);
 	}
 
 	private void queryWeatherFromNet(final String location) {
-		BsOperationHub.instance().queryWeather(location, new ReqCbk<RspMsgBase>() {
-			@Override
-			public void onSuccess(RspMsgBase rspData) {
-				// TODO Auto-generated method stub
-				if (rspData.isSuccess()) {
-					QueryWeatherPair.RspQueryWeather rsp = (QueryWeatherPair.RspQueryWeather) rspData;
-					initWeatherLayout(rsp);
-				} else {
-					if (time > 10) {
-						return;
+		BsOperationHub.instance().queryWeather(location,
+				new ReqCbk<RspMsgBase>() {
+					@Override
+					public void onSuccess(RspMsgBase rspData) {
+						// TODO Auto-generated method stub
+						if (rspData.isSuccess()) {
+							QueryWeatherPair.RspQueryWeather rsp = (QueryWeatherPair.RspQueryWeather) rspData;
+							initWeatherLayout(rsp);
+						} else {
+							if (time > 2) {
+								return;
+							}
+							queryWeatherFromNet(location);
+							time++;
+						}
 					}
-					queryWeatherFromNet(location);
-					time++;
-				}
-			}
 
-			@Override
-			public void onFailure(ErrorObject err) {
-				// TODO Auto-generated method stub
-				if (time > 10) {
-					return;
-				}
-				queryWeatherFromNet(location);
-				time++;
-			}
-		});
+					@Override
+					public void onFailure(ErrorObject err) {
+						// TODO Auto-generated method stub
+						if (time > 2) {
+							return;
+						}
+						queryWeatherFromNet(location);
+						time++;
+					}
+				});
 	}
 
 	private void initWeatherLayout(QueryWeatherPair.RspQueryWeather weather) {
 		if (weather.data != null) {
 			Weatherinfo weatherinfo = weather.data.weatherinfo;
-			tv_location.setText(weatherinfo.city.replace("市", ""));
+			if (weatherinfo != null) {
+				if (!TextUtils.isEmpty(weatherinfo.city)) {
+					tv_location.setText(weatherinfo.city.replace("市", ""));
+				}
+				Calendar curCalendar = Calendar.getInstance();
+				int curH = curCalendar.get(Calendar.HOUR_OF_DAY);
+				int curMin = curCalendar.get(Calendar.MINUTE);
+				String min = String.format("%02d", curMin);
+				if (min.length() == 1) {
+					min = "0" + min;
+				}
+				tv_time.setText("今天" + String.format("%02d", curH) + ":" + min
+						+ "发布");
 
-			Calendar curCalendar = Calendar.getInstance();
-			int curH = curCalendar.get(Calendar.HOUR_OF_DAY);
-			int curMin = curCalendar.get(Calendar.MINUTE);
-			String min = String.format("%02d", curMin);
-			if (min.length() == 1) {
-				min = "0" + min;
-			}
-			tv_time.setText("今天" + String.format("%02d", curH) + ":" + min + "发布");
+				int pm25 = 0;
+				try {
+					pm25 = Integer.parseInt(weatherinfo.pm25);
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				tv_pm25.setText(pm25 + "");
+				if (pm25 < 35) {
+					tv_level.setText("空气洁净");
+					tv_level.setBackgroundResource(R.drawable.weather_layout_outstatus_level1);
+				}
+				if (pm25 >= 35 && pm25 < 75) {
+					tv_level.setText("空气良好");
+					tv_level.setBackgroundResource(R.drawable.weather_layout_outstatus_level2);
+				}
+				if (pm25 >= 75 && pm25 < 115) {
+					tv_level.setText("轻度污染");
+					tv_level.setBackgroundResource(R.drawable.weather_layout_outstatus_level3);
+				}
+				if (pm25 >= 115 && pm25 < 150) {
+					tv_level.setText("中度污染");
+					tv_level.setBackgroundResource(R.drawable.weather_layout_outstatus_level4);
+				}
+				if (pm25 >= 150 && pm25 < 250) {
+					tv_level.setText("重度污染");
+					tv_level.setBackgroundResource(R.drawable.weather_layout_outstatus_level5);
+				}
+				if (pm25 >= 250) {
+					tv_level.setText("重度污染");
+					tv_level.setBackgroundResource(R.drawable.weather_layout_outstatus_level5);
+				}
 
-			int pm25 = Integer.parseInt(weatherinfo.pm25);
-			tv_pm25.setText(pm25 + "");
-			if (pm25 < 35) {
-				tv_level.setText("空气洁净");
-				tv_level.setBackgroundResource(R.drawable.weather_layout_outstatus_level1);
+				tv_temper.setText("温度" + weatherinfo.temp + "℃");
+				tv_humidity.setText("湿度" + weatherinfo.humidity + "%");
 			}
-			if (pm25 >= 35 && pm25 < 75) {
-				tv_level.setText("空气良好");
-				tv_level.setBackgroundResource(R.drawable.weather_layout_outstatus_level2);
-			}
-			if (pm25 >= 75 && pm25 < 115) {
-				tv_level.setText("轻度污染");
-				tv_level.setBackgroundResource(R.drawable.weather_layout_outstatus_level3);
-			}
-			if (pm25 >= 115 && pm25 < 150) {
-				tv_level.setText("中度污染");
-				tv_level.setBackgroundResource(R.drawable.weather_layout_outstatus_level4);
-			}
-			if (pm25 >= 150 && pm25 < 250) {
-				tv_level.setText("重度污染");
-				tv_level.setBackgroundResource(R.drawable.weather_layout_outstatus_level5);
-			}
-			if (pm25 >= 250) {
-				tv_level.setText("重度污染");
-				tv_level.setBackgroundResource(R.drawable.weather_layout_outstatus_level5);
-			}
-
-			tv_temper.setText("温度" + weatherinfo.temp + "℃");
-			tv_humidity.setText("湿度" + weatherinfo.humidity + "%");
 		}
 	}
 
@@ -206,7 +225,8 @@ public class WeatherView extends RelativeLayout implements View.OnClickListener 
 			if (!can) {
 				return;
 			}
-			((Activity) getContext()).startActivityForResult(new Intent(getContext(), AddCityActivity.class), 1000);
+			((Activity) getContext()).startActivityForResult(new Intent(
+					getContext(), AddCityActivity.class), 1000);
 			break;
 
 		default:
