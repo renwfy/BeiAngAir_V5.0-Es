@@ -364,7 +364,7 @@ public class LoginActivity extends BaseMultiPartActivity implements OnItemClickL
 	private void intentSkip() {
 		hideDialog();
 
-		startActivity(new Intent(mActivity, IHomerActivity.class));
+		startActivity(new Intent(mActivity, DeviceActivity.class));
 		LoginActivity.this.finish();
 	}
 

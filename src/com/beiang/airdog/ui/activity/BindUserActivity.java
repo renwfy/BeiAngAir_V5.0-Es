@@ -176,7 +176,7 @@ public class BindUserActivity extends BaseMultiPartActivity {
 	}
 	
 	private void intentSkip() {
-		startActivity(new Intent(mActivity, IHomerActivity.class));
+		startActivity(new Intent(mActivity, DeviceActivity.class));
 		finish();
 	}
 

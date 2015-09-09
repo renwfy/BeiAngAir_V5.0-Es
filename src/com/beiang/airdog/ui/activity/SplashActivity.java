@@ -43,7 +43,7 @@ public class SplashActivity extends BaseActivity {
 			public void run() {
 				if (CurrentUser.instance().isLogin()) {
 					if(!TextUtils.isEmpty(CurrentUser.instance().getPhone())){
-						startActivity(new Intent(mActivity, IHomerActivity.class));
+						startActivity(new Intent(mActivity,DeviceActivity.class));
 					}else{
 						startActivity(new Intent(mActivity, BindUserActivity.class));
 					}
