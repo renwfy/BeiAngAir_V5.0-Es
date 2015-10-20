@@ -27,7 +27,7 @@ public class SplashActivity extends BaseActivity {
 		new LocationUtils().startLocation(mActivity, null);
 
 		loadView();
-		ConfigUtils.autoUpdate(mActivity);
+		//ConfigUtils.autoUpdate(mActivity);
 	}
 
 	boolean showAd = false;
