@@ -14,6 +14,7 @@ import com.beiang.airdog.ui.activity.BindUserActivity;
 import com.beiang.airdog.view.AlertDialog;
 import com.beiang.airdog.view.AlertDialog.AlertDialogCallBack;
 import com.umeng.update.UmengUpdateAgent;
+import com.umeng.update.UmengUpdateListener;
 
 public class ConfigUtils {
 	
@@ -68,6 +69,20 @@ public class ConfigUtils {
 		UmengUpdateAgent.setUpdateOnlyWifi(false);
 		// UmengUpdateAgent.silentUpdate(this); 后台自动下载
 		UmengUpdateAgent.setUpdateAutoPopup(true);
+		UmengUpdateAgent.update(context);
+	}
+	
+	/***
+	 * 更新回调
+	 * 
+	 * @param context
+	 * @param listener
+	 */
+	public static void update(Context context,UmengUpdateListener listener){
+		UmengUpdateAgent.setUpdateOnlyWifi(false);
+		UmengUpdateAgent.setUpdateCheckConfig(false);
+		UmengUpdateAgent.setUpdateAutoPopup(false);
+		UmengUpdateAgent.setUpdateListener(listener);
 		UmengUpdateAgent.update(context);
 	}
 
